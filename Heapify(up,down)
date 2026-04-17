@@ -1,0 +1,27 @@
+def heapifyDown(nums,index):
+    largest=index
+    lchild=2*index+1
+    rchild=2*index+2
+    if(lchild<len(nums) and nums[lchild]>nums[largest]):
+        largest=lchild
+    if(rchild<len(nums) and nums[rchild]>nums[largest]):
+        largest=rchild
+    if(largest!=index):
+        nums[index],nums[largest]=nums[largest],nums[index]
+        heapifyDown(nums,largest)
+def heapifyUp(nums,index):
+    if(index>0):
+        parent=(index-1)//2
+        if(nums[index]>nums[parent]):
+            nums[index],nums[parent]=nums[parent],nums[index]
+            heapifyUp(nums,parent)
+nums=[10,7,6,4,5,4,5,3,2]
+index=0
+value=1
+if(nums[index]>value):
+    nums[index]=value
+    heapifyDown(nums,index)
+elif(nums[index]<value):
+    nums[index]=value
+    heapifyUp(nums,index)
+print(nums)
