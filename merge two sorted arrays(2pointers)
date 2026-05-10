@@ -1,0 +1,24 @@
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        left = 0
+        right = 0
+        index = 0
+        arr3 = [0] * (m + n)
+        while left < m and right < n:
+            if nums1[left] <= nums2[right]:
+                arr3[index] = nums1[left]
+                left += 1
+            else:
+                arr3[index] = nums2[right]
+                right += 1
+            index += 1
+        while left < m:
+            arr3[index] = nums1[left]
+            left += 1
+            index += 1
+        while right < n:
+            arr3[index] = nums2[right]
+            right += 1
+            index += 1
+        for i in range(m + n):
+            nums1[i] = arr3[i]
