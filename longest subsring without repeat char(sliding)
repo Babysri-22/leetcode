@@ -1,0 +1,13 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        left=0
+        mlen=0
+        hash_map=set()
+        n=len(s)
+        for right in range(n):
+            while s[right] in hash_map:
+                hash_map.remove(s[left])
+                left+=1
+            hash_map.add(s[right])
+            mlen=max(mlen,right-left+1)
+        return mlen
